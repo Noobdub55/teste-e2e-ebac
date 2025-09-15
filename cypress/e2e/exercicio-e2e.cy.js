@@ -36,7 +36,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
    ProdutoPage.addPodutoCarrinho('L' , 'Purple' , 1)
 
    cy.get('.dropdown-toggle > .text-skin ').click()
-   cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .view-cart').click()
+   cy.contains('a', 'View Cart').click({force: true})
    cy.get('.checkout-button').click()
 
    cy.checkout('Luna', 
@@ -46,7 +46,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                'Piraporinha', 
                '03268900', 
                '11958589739')
-   cy.get('.page-title').should('exist')           
+   cy.get('.woocommerce-notice').should('exist')           
    
       
   });
