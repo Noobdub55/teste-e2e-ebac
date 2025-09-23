@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stage('clonar repositorio'){
+        steps{
+            git branch: 'main', url: 'https://github.com/Noobdub55/teste-e2e-ebac.git'
+        }
+    }
+
+    stage('Instalar dependecias'){
+        steps{
+            sh 'npm install'
+        }
+    }
+
+    stage('executar testes'){
+        steps{
+            sh 'NO_COLOR=1 npm run cy:run'
+        }
+    }
+}
